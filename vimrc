@@ -1,3 +1,7 @@
+set rtp+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+
 set runtimepath+=~/.vim
 runtime autoload/autoload/pathogen.vim
 execute pathogen#infect()
