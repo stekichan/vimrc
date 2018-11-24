@@ -13,3 +13,12 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/Align"]
+	path = bundle/Align
+	url = https://github.com/vim-scripts/Align
+[submodule "bundle/Conque"]
+	path = bundle/Conque
+	url = https://github.com/vim-scripts/Conque-Shell
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git

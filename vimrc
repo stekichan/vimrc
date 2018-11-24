@@ -5,8 +5,6 @@ syntax on
 set runtimepath+=~/.vim
 runtime autoload/autoload/pathogen.vim
 execute pathogen#infect()
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
 filetype off
 set number				" display line number
 set nocompatible                        " vim defaults, not vi!
@@ -17,6 +15,7 @@ set shiftwidth=8                        " indents of 8
 set autoindent smartindent              " turn on auto/smart indenting
 set smarttab                            " make <tab> and <backspace> smarter
 set backspace=eol,start,indent          " allow backspacing over indent, eol, & start
+"set list lcs=tab:\.\                    " shows tabs in the beginning of a line"
 filetype plugin indent on
 nmap <C-J> vip=                         " forces (re)indentation of a block of code
 syntax on				" enable syntax highlighting
@@ -38,19 +37,26 @@ let $kernel_version=system('uname -r | tr -d "\n"')
 set hlsearch
 set incsearch
 
-"set tags=/mnt/Nachiket/gerrit-tree/mero/tags
-"set tags=/mnt/Nachiket/incr_recov_rs/colibri/core/tags
-"set tags=/mnt/Nachiket/m0_cookie_for_senderID/colibri/core/tags
-"set tags=/mnt/Nachiket/cookie_for_senderID/mero/tags
-"set tags=/mnt/Nachiket/dgio-robust/mero
 set tabstop=8
 set shiftwidth=8
 set softtabstop=8
+"" marks the current line of cursor.
 set cursorline
-"set spell spelllang=en_gb
-autocmd ColorScheme * highlight  CodingStyle ctermbg=darkgreen guibg=darkgreen
-highlight CodingStyle ctermbg=darkgreen guibg=darkgreen
-match CodingStyle /\s\+$\| \+\ze\t\|#include<\|#include"\|for(\|if(\|while(\|switch(\|){\|\,[a-z,A-Z]\|\s\+\,\|\s\+\;\|[a-z,A-Z,0-9][+]\|[a-z,A-Z,0-9][=]\|[=][a-z,A-Z,0-9]\|\%>80v\|[a-z,A-Z,0-9]s_tlist_[a-z,A-Z,0-9]\|[a-z,A-Z,0-9]s_tlink_[a-z,A-Z,0-9]\|[a-z,A-Z,0-9]_tlink_init([a-z], [a-z]);\n\t[a-z,A-Z]*_tlist_add\|{\n\t\t[a-z,0-9]\s=\s[a-z,0-9]\;\n\t}/
+set spell spelllang=en_gb
+"autocmd ColorScheme * highlight  CodingStyle ctermbg=darkgreen guibg=darkgreen
+highlight CodingStyle ctermbg=grey guibg=darkgreen
+" coding style
+" 1.pre-increment of counter.
+" 2. whitespace after #include and <
+" 3. whitespace after loop/conditional block constructs eg. while () and not
+" while()
+" 4. whitespace before and after = sign.
+" 5. Code shall not cross 80 column limit.
+" 6. A highlighter for accidental termination of 'if' block. eg. 
+" if (condition);
+"	do_something();
+"This is not foool-proof and might give false positive on style violation.
+match CodingStyle /\s\+$\| \+\ze\t\|#include<\|#include"\|for(\|if(\|while(\|switch(\|){\|\,[a-z,A-Z]\|\s\+\,\|\s\+\;\|[a-z,A-Z,0-9][+]\|[a-z,A-Z,0-9][=]\|[=][a-z,A-Z,0-9]\|\%>80v\|[a-z,A-Z,0-9]s_tlist_[a-z,A-Z,0-9]\|[a-z,A-Z,0-9]s_tlink_[a-z,A-Z,0-9]\|[a-z,A-Z,0-9]_tlink_init([a-z], [a-z]);\n\t[a-z,A-Z]*_tlist_add\|{\n\t\t[a-z,0-9]\s=\s[a-z,0-9]\;\n\t}\|if\s\+(.*)\;/
 
 	"match CodingStyle /\s\+$\| \+\ze\t\|#include<\|#include"\|if(\|\,[a-z,A-Z]\|\s\+\,\|\s\+\;\|[a-z,A-Z][==\|<\|>]\|[==\|<\|>][a-z,A-Z]/
 "match ExtraWhitespace /^\t*\zs \+/
@@ -61,3 +67,6 @@ match CodingStyle /\s\+$\| \+\ze\t\|#include<\|#include"\|for(\|if(\|while(\|swi
 "set tags=/mnt/Nachiket/rpc/colibri/core/tags
 "ab fd fd_tree
 ab #i #include
+
+" Various default register values
+let s='$a;'
